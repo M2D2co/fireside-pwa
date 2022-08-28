@@ -5,7 +5,7 @@
   "homepage": "https://github.com/M2D2co/fireside-angular",
   "scripts": {
     "start": "npm start --prefix angular",
-    "serve": "npm build --prefix functions && firebase emulators:start",
+    "serve": "npm run build && firebase emulators:start",
     "build": "npm run build --prefix angular && npm run build --prefix functions",
     "lint": "npm run lint --prefix angular && npm run lint --prefix functions",
     "test": "npm run test --prefix angular && npm run test --prefix functions",
