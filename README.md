@@ -22,7 +22,7 @@ Either way, make sure the contents of the file are properly formatted JSON.
 ## Commands
 
 * Run Angular project `npm start`
-* Run Emulators `npm run serve`
+* Run Emulators `npm run serve` (will build both Angular and Functions before serving)
 * Lint `npm run lint`
 * Test `npm run test`
 * Build `npm run build`
