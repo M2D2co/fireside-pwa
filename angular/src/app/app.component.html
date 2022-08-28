@@ -1,0 +1,26 @@
+<div class="page">
+  <header>
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">
+      <img class="logo" src="../assets/img/logo.svg" alt="Andromeda">
+    </a>
+    <nav>
+      <ul>
+        <li *ngIf="(user | async)"><a [routerLink]="['/']" routerLinkActive="router-link-active">Chat Room</a></li>
+        <li *ngIf="(user | async)"><a [routerLink]="['/search']" routerLinkActive="router-link-active">Search</a></li>
+        <li *ngIf="(user | async) === null"><a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a></li>
+        <li *ngIf="(user | async)"><a [routerLink]="['/logout']" routerLinkActive="router-link-active">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <span>
+      &copy; {{startYear}} <span *ngIf="startYear !== currentYear">- {{ currentYear }}</span>
+      M2D2 Enterprises LLC
+    </span>
+  </footer>
+</div>
