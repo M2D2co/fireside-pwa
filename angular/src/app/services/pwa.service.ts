@@ -1,6 +1,8 @@
 import { Platform } from '@angular/cdk/platform';
 import { Injectable } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { timer } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { InstallPromptComponent } from '../core/install-prompt/install-prompt.component';
 
 @Injectable({
@@ -28,8 +30,10 @@ export class PwaService {
     })
   }
 
-  private openPromptComponent(mobileType: 'ios' | 'android', event: Event) {
-    this.bottomSheet.open(InstallPromptComponent, { data: { mobileType, promptEvent: event } });
+  private openPromptComponent(mobileType: 'ios' | 'android', event: Event): void {
+    timer(3000).pipe(take(1)).subscribe(() => {
+      this.bottomSheet.open(InstallPromptComponent, { data: { mobileType, promptEvent: event } });
+    })
   }
 
 }
