@@ -18,22 +18,12 @@ You'll need to run the emulator to fully test:
 
 - Add a valid apple-touch-icon
 - Note the test is unable to determine "Content is sized correctly for the viewport"
+- Icons
 
 ## Add an install button
 
-HTML:
-
-```
-<button *ngIf="Pwa.promptEvent" (click)="installPwa()">Install</button>
-```
-
-TypeScript:
-
-```
-installPwa(): void {
-  this.Pwa.promptEvent.prompt();
-}
-```
+* Colors
+* Uncomment service
 
 ## Add Notifications
 
