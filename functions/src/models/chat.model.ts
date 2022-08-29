@@ -1,6 +1,6 @@
 import { firestore } from 'firebase-admin';
 
-export interface Chat {
+export type Chat = {
   contentText: string;
   contentImageURL?: string;
   displayName: string;
@@ -8,7 +8,7 @@ export interface Chat {
   timestamp: Date;
 }
 
-export interface ChatRecord {
+export type ChatRecord = {
   contentText: string;
   contentImageURL?: string;
   uid: string;

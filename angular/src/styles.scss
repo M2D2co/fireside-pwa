@@ -92,6 +92,7 @@ h1 {
   padding: .75rem 1rem;
   margin: 0;
   text-shadow: 0 0 3px white;
+  width: 50%;
 }
 
 h2 {
@@ -141,6 +142,14 @@ h4 {
   bottom: 4.75rem;
   right: 0;
   left: 0;
+}
+
+.chat .header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-list {

@@ -1,5 +1,12 @@
 <div class="chat">
-  <h1>Chat Room</h1>
+  <div class="header">
+    <h1>Chat Room</h1>
+    <!-- TODO: FCM -->
+    <div class="notifications">
+      <button mat-flat-button color="primary" *ngIf="!currentUser?.notificationToken" (click)="enableNotification()">Enable Notifications</button>
+      <button mat-flat-button color="primary" *ngIf="currentUser?.notificationToken" (click)="disableNotification()">Disable Notifications</button>
+    </div>
+  </div>
   <div class="input-group">
     <button mat-icon-button (click)="toggleInputImage()" aria-label="toggle text vs image">
         <mat-icon *ngIf="!inputImage">camera_alt</mat-icon>
