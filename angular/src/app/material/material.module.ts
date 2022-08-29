@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -21,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [
   ],
   exports: [
+    MatBottomSheetModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,

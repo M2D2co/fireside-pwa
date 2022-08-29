@@ -1,0 +1,9 @@
+.prompt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-toolbar {
+  margin: -8px -16px;
+  width: calc(100% + 32px);
+}
