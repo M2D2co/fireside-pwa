@@ -2,8 +2,6 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import { Chat, ChatRecord } from '../models/chat.model';
 
-admin.initializeApp();
-
 // eslint-disable-next-line camelcase
 export const apiOnGet_Chats_byEmail = functions.https.onRequest(async (request, response) => {
   response.set('Access-Control-Allow-Origin', '*');
