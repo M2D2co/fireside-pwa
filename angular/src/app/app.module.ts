@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
@@ -19,6 +19,9 @@ import { USE_EMULATOR as USE_EMULATOR_FUNCTIONS } from '@angular/fire/compat/fun
 import { USE_EMULATOR as USE_EMULATOR_FIRESTORE } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as USE_EMULATOR_STORAGE } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
+import { PwaService } from './services/pwa.service';
+
+const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { environment } from '../environments/environment';
     { provide: USE_EMULATOR_FIRESTORE, useValue: environment.useEmulator ? ['localhost', 8080] : undefined },
     { provide: USE_EMULATOR_FUNCTIONS, useValue: environment.useEmulator ? ['localhost', 5001] : undefined },
     { provide: USE_EMULATOR_STORAGE, useValue: environment.useEmulator ? ['localhost', 9199] : undefined },
+    //  PWA
+    { provide: APP_INITIALIZER, useFactory: initializer, deps: [ PwaService ], multi: true }
   ],
   bootstrap: [AppComponent]
 })
