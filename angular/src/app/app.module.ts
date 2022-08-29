@@ -4,6 +4,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,8 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    // TODO: FCM - Add messaging module
+    AngularFireMessagingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
