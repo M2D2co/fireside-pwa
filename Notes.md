@@ -34,3 +34,4 @@ You'll need to run the emulator to fully test:
 5. Create Function to publish notifications on new chats
 6. Create Firebase Messaging Service Worker (add file to 'angular.json')
 7. Show in-app notifications when loaded
+8. Enable Messaging API https://console.cloud.google.com/apis/api/fcm.googleapis.com/overview?project={projectid}
