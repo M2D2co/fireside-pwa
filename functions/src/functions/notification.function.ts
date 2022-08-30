@@ -26,8 +26,8 @@ export const onUpdate_User_Subscribe = functions.firestore.document('users/{uid}
 // TODO: FCM - Send notification when chat message is written
 // eslint-disable-next-line camelcase
 export const onCreate_Chat_Notify = functions.firestore.document('chats/{chatId}')
-  .onCreate(snapshot => {
-    const chat = snapshot.data() as Chat;
+  .onCreate(async snapshot => {
+    const chat = await snapshot.data() as Chat;
 
     return admin.messaging().send({
       topic: TOPIC,
