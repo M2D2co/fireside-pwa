@@ -5,7 +5,7 @@ import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { Chat } from '../chat.model';
 import { ChatService } from '../services/chat.service';
-import { first, mergeMap, takeUntil, tap } from 'rxjs/operators';
+import { first, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Profile } from '../../models/profile.model';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -44,6 +44,10 @@ export class ChatRoomComponent implements OnDestroy {
 
     this.authSvc.profile.pipe(takeUntil(this.destroyed$)).subscribe(user => {
       this.currentUser = user;
+      // TODO: FCM - load FCM if appropriate
+      if (user.notificationToken) {
+        this.fcm.getToken.pipe(first()).subscribe()
+      }
     });
   }
 
@@ -82,28 +86,26 @@ export class ChatRoomComponent implements OnDestroy {
   }
 
   enableNotification() {
-    console.log('enable')
     // TODO: FCM - store the token
     this.fcm.requestToken.pipe(
-      // first(),
-      tap(token => this.db.doc(`/users/${this.currentUser?.uid}`).update({
+      first(),
+      switchMap(token => this.db.doc(`/users/${this.currentUser?.uid}`).update({
         ...this.currentUser,
         notificationToken: token,
       })),
-    )
+    ).subscribe()
   }
 
   disableNotification() {
-    console.log('disable')
     // TODO: FCM - delete the token
     this.fcm.getToken.pipe(
-      // first(),
+      first(),
       mergeMap(token => token ? this.fcm.deleteToken(token) : EMPTY),
-      tap(success => this.db.doc(`/users/${this.currentUser?.uid}`).update({
+      switchMap(success => this.db.doc(`/users/${this.currentUser?.uid}`).update({
         ...this.currentUser,
         notificationToken: null,
       })),
-    )
+    ).subscribe()
   }
 
   ngOnDestroy() {

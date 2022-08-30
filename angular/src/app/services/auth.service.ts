@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '@firebase/auth-types';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 import md5 from 'crypto-js/md5';
 import { Profile } from '../models/profile.model';
 import { switchMap } from 'rxjs/operators';
@@ -13,20 +13,22 @@ const DEFAULT_USER = 'Anonymous';
   providedIn: 'root'
 })
 export class AuthService {
-  private _currentProfile: Profile | null = null;
-  public readonly profile: Observable<Profile | null> = this.auth.authState.pipe(
-    switchMap(async user => {
-      if (!user) {
-        return null;
-      } else if (this._currentProfile && this._currentProfile.uid === user.uid) {
-        return this._currentProfile;
-      } else {
-        const profile = await this.buildProfile(user);
-        this._currentProfile = profile;
-        await this.db.collection('users').doc(profile.uid).set(profile, { merge: true });
-        return profile;
+  public readonly profile: Observable<Profile> = this.auth.authState.pipe(
+    switchMap(authUser => {
+      if (authUser?.uid) {
+        return this.db.doc<Profile>(`users/${authUser.uid}`).valueChanges().pipe(
+          switchMap(profile => {
+            if (!profile) {
+              const newProfile = this.buildProfile(authUser);
+              // this._currentProfile = newProfile;
+              return this.db.collection('users').doc(newProfile.uid).set(newProfile, { merge: true }).then(() => newProfile)
+            }
+            return of(profile)
+          })
+        )
       }
-    })
+      return EMPTY
+    }),
   );
 
   constructor(
@@ -38,7 +40,7 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-  private async buildProfile(user: User): Promise<Profile> {
+  private buildProfile(user: User): Profile {
     // Default to auth settings
     const profile = {
       uid: user.uid,
