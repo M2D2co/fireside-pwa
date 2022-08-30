@@ -87,25 +87,25 @@ export class ChatRoomComponent implements OnDestroy {
 
   enableNotification() {
     // TODO: FCM - store the token
-    this.fcm.requestToken.pipe(
-      first(),
-      switchMap(token => this.db.doc(`/users/${this.currentUser?.uid}`).update({
-        ...this.currentUser,
-        notificationToken: token,
-      })),
-    ).subscribe()
+    // this.fcm.requestToken.pipe(
+    //   first(),
+    //   switchMap(token => this.db.doc(`/users/${this.currentUser?.uid}`).update({
+    //     ...this.currentUser,
+    //     notificationToken: token,
+    //   })),
+    // ).subscribe()
   }
 
   disableNotification() {
     // TODO: FCM - delete the token
-    this.fcm.getToken.pipe(
-      first(),
-      mergeMap(token => token ? this.fcm.deleteToken(token) : EMPTY),
-      switchMap(success => this.db.doc(`/users/${this.currentUser?.uid}`).update({
-        ...this.currentUser,
-        notificationToken: null,
-      })),
-    ).subscribe()
+    // this.fcm.getToken.pipe(
+    //   first(),
+    //   mergeMap(token => token ? this.fcm.deleteToken(token) : EMPTY),
+    //   switchMap(success => this.db.doc(`/users/${this.currentUser?.uid}`).update({
+    //     ...this.currentUser,
+    //     notificationToken: null,
+    //   })),
+    // ).subscribe()
   }
 
   ngOnDestroy() {

@@ -19,7 +19,6 @@ import { USE_EMULATOR as USE_EMULATOR_FUNCTIONS } from '@angular/fire/compat/fun
 import { USE_EMULATOR as USE_EMULATOR_FIRESTORE } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as USE_EMULATOR_STORAGE } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
-import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { PwaService } from './services/pwa.service';
 const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
@@ -36,18 +35,12 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     AngularFirestoreModule,
     AngularFireStorageModule,
     // TODO: FCM - Add messaging module
-    AngularFireMessagingModule,
+    // AngularFireMessagingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
     ChatModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
   ],
   providers: [
     AngularFireAuthGuard,

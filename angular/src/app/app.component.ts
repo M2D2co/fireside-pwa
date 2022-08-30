@@ -19,15 +19,15 @@ export class AppComponent {
     private snackBar: MatSnackBar,
   ) {
     // TODO: FCM - display in-app notifications
-    this.fcm.messages.subscribe(message => {
-      const notificationText = message?.notification?.body;
-      if (notificationText) {
-        this.snackBar.open(notificationText, 'dismiss', {
-          panelClass: 'snackbar-success',
-          verticalPosition: 'top',
-          horizontalPosition: 'right',
-        })
-      }
-    })
+    // this.fcm.messages.subscribe(message => {
+    //   const notificationText = message?.notification?.body;
+    //   if (notificationText) {
+    //     this.snackBar.open(notificationText, 'dismiss', {
+    //       panelClass: 'snackbar-success',
+    //       verticalPosition: 'top',
+    //       horizontalPosition: 'right',
+    //     })
+    //   }
+    // })
   }
 }
