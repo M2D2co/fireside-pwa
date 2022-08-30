@@ -53,12 +53,6 @@ main {
   margin: 5rem 2rem 2rem;
 }
 
-.sr-only {
-  position: absolute;
-  top: -999rem;
-  left: -999rem;
-}
-
 a:link,
 a:visited {
   color: colors.$primary;
@@ -150,6 +144,7 @@ h4 {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  margin: 0 1rem;
 }
 
 .chat-list {

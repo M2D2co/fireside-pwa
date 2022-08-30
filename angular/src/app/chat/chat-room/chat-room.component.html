@@ -24,7 +24,7 @@
       <div class="chat-bubble">
         <div>
           <div *ngIf="chat.contentText">{{chat.contentText}}</div>
-          <img *ngIf="chat.contentImageURL" src="{{chat.contentImageURL}}" alt="user provided image">
+          <img *ngIf="chat.contentImageURL" src="{{chat.contentImageURL}}" alt="user provided image" loading="lazy">
         </div>
       </div>
       <div class="info">{{chat.displayName}} - {{ chat.timestamp | date:'MMM dd, YYYY @ hh:mm a' }}</div>
