@@ -15,7 +15,6 @@ import { SharedModule } from './shared/shared.module';
 import { ChatModule } from './chat/chat.module';
 import firebaseConfig from '../firebase.config.json';
 
-import { USE_EMULATOR as USE_EMULATOR_AUTH } from '@angular/fire/compat/auth';
 import { USE_EMULATOR as USE_EMULATOR_FUNCTIONS } from '@angular/fire/compat/functions';
 import { USE_EMULATOR as USE_EMULATOR_FIRESTORE } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as USE_EMULATOR_STORAGE } from '@angular/fire/compat/storage';
@@ -53,10 +52,9 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
   providers: [
     AngularFireAuthGuard,
     //  To emulate Functions
-    { provide: USE_EMULATOR_AUTH, useValue: environment.useEmulator ? ['localhost', 9099] : undefined },
-    { provide: USE_EMULATOR_FIRESTORE, useValue: environment.useEmulator ? ['localhost', 8080] : undefined },
-    { provide: USE_EMULATOR_FUNCTIONS, useValue: environment.useEmulator ? ['localhost', 5001] : undefined },
-    { provide: USE_EMULATOR_STORAGE, useValue: environment.useEmulator ? ['localhost', 9199] : undefined },
+    { provide: USE_EMULATOR_FIRESTORE, useValue: environment.useEmulator ? ['http://localhost:8080'] : undefined },
+    { provide: USE_EMULATOR_FUNCTIONS, useValue: environment.useEmulator ? ['http://localhost:5001'] : undefined },
+    { provide: USE_EMULATOR_STORAGE, useValue: environment.useEmulator ? ['http://localhost:9199'] : undefined },
     //  PWA
     { provide: APP_INITIALIZER, useFactory: initializer, deps: [ PwaService ], multi: true }
   ],
