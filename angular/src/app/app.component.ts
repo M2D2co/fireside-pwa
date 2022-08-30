@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireMessaging } from '@angular/fire/compat/messaging';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +15,19 @@ export class AppComponent {
 
   constructor(
     private auth: AngularFireAuth,
-  ) { }
+    private fcm: AngularFireMessaging,
+    private snackBar: MatSnackBar,
+  ) {
+    // TODO: FCM - display in-app notifications
+    this.fcm.messages.subscribe(message => {
+      const notificationText = message?.notification?.body;
+      if (notificationText) {
+        this.snackBar.open(notificationText, 'dismiss', {
+          panelClass: 'snackbar-success',
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        })
+      }
+    })
+  }
 }

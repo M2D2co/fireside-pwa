@@ -4,6 +4,7 @@
 .angular/**
 .firebase/**
 firebase.config.json
+.firebaserc
 
 # compiled output
 /dist
