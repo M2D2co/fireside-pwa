@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { Profile } from '../../models/profile.model';
 import { Timestamp } from 'firebase/firestore';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface ChatFromAPI extends Omit<Chat, 'timestamp'> {
   timestamp: string;
@@ -42,7 +43,7 @@ export class ChatService {
   }
 
   search(email: string): Observable<Chat[]> {
-    const url = `/api/search?email=${email}`;
+    const url = `${environment.functionBaseUrl}/api/search?email=${email}`;
     return this.http.get<ChatFromAPI[]>(url).pipe(
       map(chats => chats.map(
         chat => ({ ...chat, timestamp: new Date(chat.timestamp) })

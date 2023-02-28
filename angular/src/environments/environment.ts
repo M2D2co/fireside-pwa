@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   useEmulator: false,
+  functionBaseUrl: 'https://fireside-73c10.web.app',
 };
 
 /*
