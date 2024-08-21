@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm start --prefix angular",
     "serve": "npm run build && firebase emulators:start",
+    "emulate": "firebase emulators:start",
     "setup": "npm install --prefix angular && npm install --prefix functions",
     "build": "npm run build --prefix angular && npm run build --prefix functions",
     "lint": "npm run lint --prefix angular && npm run lint --prefix functions",
