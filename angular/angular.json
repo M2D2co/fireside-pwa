@@ -125,7 +125,6 @@
       }
     }
   },
-  "defaultProject": "fireside-angular",
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
