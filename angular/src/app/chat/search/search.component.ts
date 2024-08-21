@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Observable, EMPTY } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Chat } from '../chat.model';
@@ -11,13 +11,13 @@ import { ChatService } from '../services/chat.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-  readonly searchForm: FormGroup;
+  readonly searchForm: UntypedFormGroup;
   searching = false;
 
   chats: Observable<Chat[]> = EMPTY;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private chatService: ChatService,
   ) {
     this.searchForm = this.fb.group({
