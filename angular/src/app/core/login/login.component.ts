@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FirebaseuiAngularLibraryService, FirebaseUISignInFailure } from 'firebaseui-angular';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 
 @Component({
   selector: 'app-login',

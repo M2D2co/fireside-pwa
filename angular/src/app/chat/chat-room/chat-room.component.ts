@@ -8,7 +8,7 @@ import { ChatService } from '../services/chat.service';
 import { first, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Profile } from '../../models/profile.model';
 import { AuthService } from '../../services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
