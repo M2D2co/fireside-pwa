@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { Chat, ChatRecord } from '../chat.model';
 import { map } from 'rxjs/operators';
 import { Profile } from '../../models/profile.model';
@@ -37,9 +37,8 @@ export class ChatService {
    * Returns an active observable of all chats in the log.
    */
   list(): Observable<Chat[]> {
-    return this.db.collection<ChatRecord>('chats', ref => ref.orderBy('timestamp', 'desc')).valueChanges().pipe(
-      map(records => records.map(this.convertRecordToChat))
-    );
+    // TODO: read chats
+    return EMPTY
   }
 
   search(email: string): Observable<Chat[]> {
@@ -55,13 +54,8 @@ export class ChatService {
    * Stores a chat to the log and returns the new chat ID.
    */
   private saveChat(content: string | File, user: Profile): Promise<string> {
-    return this.db.collection<ChatRecord>('chats').add({
-      contentText: typeof content === 'string' ? content : '',
-      uid: user.uid,
-      displayName: user.displayName,
-      avatarURL: user.avatarUrl,
-      timestamp: Timestamp.now(),
-    }).then(ref => ref.id);
+    // TODO: write chats
+    return Promise.reject()
   }
 
   /**
