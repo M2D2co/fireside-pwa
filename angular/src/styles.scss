@@ -69,12 +69,6 @@ a:focus {
   text-decoration: underline;
 }
 
-.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
-  &:hover, &:focus {
-    background: darken(#0A3F7F,10%);
-  }
-}
-
 .router-link-active {
   color: colors.$accent;
 }

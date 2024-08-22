@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 import { EMPTY, Observable, Subject } from 'rxjs';
@@ -20,7 +20,7 @@ export class ChatRoomComponent implements OnDestroy {
   private destroyed$: Subject<boolean> = new Subject();
   currentUser: Profile | null = null;
 
-  readonly chatForm: FormGroup;
+  readonly chatForm: UntypedFormGroup;
   readonly chats: Observable<Chat[]>;
   inputImage = false;
   user = this.auth.authState;
@@ -29,7 +29,7 @@ export class ChatRoomComponent implements OnDestroy {
     public snackBar: MatSnackBar,
     public auth: AngularFireAuth,
     private authSvc: AuthService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private chatService: ChatService,
     private fcm: AngularFireMessaging,
     private db: AngularFirestore,

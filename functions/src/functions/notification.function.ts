@@ -8,7 +8,7 @@ import * as functions from 'firebase-functions';
 // TODO: FCM - Subscribe user to chat topic when they set their notification token
 // eslint-disable-next-line camelcase
 export const onUpdate_User_Subscribe = functions.firestore.document('users/{uid}')
-  .onUpdate(async (change, context) => {
+  .onUpdate(async change => {
     // const user = change.before.data() as Profile;
     // const newUser = change.after.data() as Profile;
 
