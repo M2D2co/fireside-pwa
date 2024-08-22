@@ -3,7 +3,7 @@
 ## Setup PWA
 
 $ cd angular
-$ ng add @angular/pwa@13
+$ ng add @angular/pwa@17
 
 ## Test PWA
 
@@ -16,14 +16,14 @@ You'll need to run the emulator to fully test:
 
 ## Fix Issues
 
+- Icons (rename app-icons > icons)
 - Add a valid apple-touch-icon
 - Note the test is unable to determine "Content is sized correctly for the viewport"
-- Icons
 
 ## Add an install button
 
-* Colors
-* Uncomment service
+- Colors
+- Uncomment service
 
 ## Add Notifications
 
