@@ -21,7 +21,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "crypto-js/md5"
+              "crypto-js/md5",
+              "dialog-polyfill"
             ],
             "outputPath": "dist/fireside-angular",
             "index": "src/index.html",

@@ -113,6 +113,11 @@ h4 {
 
 .snackbar-success {
   background: colors.$primary;
+  color: white;
+  button {
+    color: colors.$grey-dark;
+    background: darken(colors.$primary, 10%);
+  }
 }
 
 .snackbar-info {
