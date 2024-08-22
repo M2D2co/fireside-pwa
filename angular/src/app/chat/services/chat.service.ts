@@ -43,7 +43,7 @@ export class ChatService {
   }
 
   search(email: string): Observable<Chat[]> {
-    const url = `${environment.functionBaseUrl}/api/search?email=${email}`;
+    const url = `/api/search?email=${email}`;
     return this.http.get<ChatFromAPI[]>(url).pipe(
       map(chats => chats.map(
         chat => ({ ...chat, timestamp: new Date(chat.timestamp) })

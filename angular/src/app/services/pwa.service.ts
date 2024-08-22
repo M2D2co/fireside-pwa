@@ -18,7 +18,8 @@ export class PwaService {
   public initPwaPrompt(): void {
     window.addEventListener('beforeinstallprompt', event => {
       //  TODO
-      if (this.platform.ANDROID) {
+      console.log(this.platform)
+      if (this.platform.ANDROID || this.platform.BLINK) {
         event.preventDefault()
         this.openPromptComponent('android', event);
       } else if (this.platform.IOS) {

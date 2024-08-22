@@ -1,8 +1,8 @@
 # PlayingWithFire-Fireside
 
-Node 14
-Angular 13
-Firebase SDK 9
+Node 18
+Angular 17
+Firebase SDK 10
 
 ## Project Configuration
 
