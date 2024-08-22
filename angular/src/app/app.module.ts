@@ -23,7 +23,7 @@ import { USE_EMULATOR as USE_EMULATOR_STORAGE } from '@angular/fire/compat/stora
 import { environment } from '../environments/environment';
 import firebaseConfig from '../firebase.config.json';
 
-const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
+// const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt()
     { provide: USE_EMULATOR_STORAGE, useValue: environment.useEmulator ? ['localhost', 9199] : undefined },
     { provide: USE_EMULATOR_AUTH, useValue: environment.useEmulator ? ['http://127.0.0.1:9099'] : undefined },
     //  PWA
-    { provide: APP_INITIALIZER, useFactory: initializer, deps: [ PwaService ], multi: true }
+    // { provide: APP_INITIALIZER, useFactory: initializer, deps: [ PwaService ], multi: true }
   ],
   bootstrap: [AppComponent]
 })
