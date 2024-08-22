@@ -13,5 +13,8 @@
     "test": "npm run test --prefix angular && npm run test --prefix functions",
     "deploy": "npm run build && firebase deploy"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "firebase-tools": "^13.15.4"
+  }
 }
