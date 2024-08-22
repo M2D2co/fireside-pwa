@@ -37,6 +37,7 @@ export class ChatService {
    * Returns an active observable of all chats in the log.
    */
   list(): Observable<Chat[]> {
+    // TODO: read chats
     return this.db.collection<ChatRecord>('chats', ref => ref.orderBy('timestamp', 'desc')).valueChanges().pipe(
       map(records => records.map(this.convertRecordToChat))
     );
@@ -55,6 +56,7 @@ export class ChatService {
    * Stores a chat to the log and returns the new chat ID.
    */
   private saveChat(content: string | File, user: Profile): Promise<string> {
+    // TODO: write chats
     return this.db.collection<ChatRecord>('chats').add({
       contentText: typeof content === 'string' ? content : '',
       uid: user.uid,
